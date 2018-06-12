@@ -6,13 +6,13 @@ def main(argv):
     port = 80
     ipaddress = '127.0.0.1'
     try:
-        opts, args = getopt.getopt(argv, "hp:a",["port=","ip="])
+        opts, args = getopt.getopt(argv, "hpa",["port=","ip="])
     except getopt.GetoptError:
         print 'portchecker.py -port <portnumber> -ip <ipaddress>'
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print 'portchecker.py -port <portnumber -ip <ipaddress>'
+            print 'portchecker.py -port <portnumber> -ip <ipaddress>'
             sys.exit()
         elif opt in ("-p", "--port"):
             port = int(arg)
