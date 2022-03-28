@@ -1,6 +1,6 @@
 import openpyxl
-from openpyxl.styles import Font, PatternFill
 from copy import copy
+import os
 
 inv_file = openpyxl.load_workbook("inventory.xlsx")
 product_list = inv_file["Sheet1"]
@@ -49,4 +49,7 @@ print(products_under_10_inv)
 # Haven't been able to get the column width thing to work yet...
 # product_list.column_dimensions["E"].auto_size = True
 
-inv_file.save("inventory_with_total_value.xlsx")
+if not os.path.exists(".\\generated"):
+    os.makedirs(".\\generated")
+
+inv_file.save(".\\generated\\inventory_with_total_value.xlsx")
