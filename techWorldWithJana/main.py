@@ -1,11 +1,8 @@
-from user import User
-from post import Post
+import requests
 
-firstUser = User("nick@willard.com", "Nick Willard", "secretPassword", "BizOps Engineer")
-firstUser.get_user_info()
+response = requests.get("https://gitlab.com/api/v4/users/kwiknick/projects")
 
-secondUser = User("john@willard.com", "John Willard", "secretPassword", "BizOps Engineer")
-secondUser.get_user_info()
+my_projects = response.json()
 
-new_post = Post("on a secret mission today", secondUser.name)
-new_post.get_post_info()
+for project in my_projects:
+    print(f"Project Name: {project['name']} Project URL: {project['web_url']}")
